@@ -1,6 +1,9 @@
 package com.sisgpn.backend.api.controller;
 
+import com.sisgpn.backend.api.model.Circuito;
 import com.sisgpn.backend.api.model.Persona;
+import com.sisgpn.backend.api.model.Subcircuito;
+import com.sisgpn.backend.api.model.Vehiculo;
 import com.sisgpn.backend.api.service.IPersonaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,6 +117,9 @@ public class PersonaController {
             personaActual.setCiudadNacimiento(persona.getCiudadNacimiento());
             personaActual.setTipoSangre(persona.getTipoSangre());
             personaActual.setRango(persona.getRango());
+
+            personaActual.setSubcircuito(persona.getSubcircuito());
+            personaActual.setVehiculo(persona.getVehiculo());
             personaActualizada=personaService.save(personaActual);
 
         }catch (DataAccessException e){
@@ -139,6 +145,16 @@ public class PersonaController {
         }
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK) ;
 
+    }
+
+    @GetMapping("/subcircuitos")
+    public List<Subcircuito> listarSubcircuitos(){
+        return personaService.findAllSubcircuitos();
+    }
+
+    @GetMapping("/vehiculos")
+    public List<Vehiculo> listarVehiculos(){
+        return personaService.findAllVehiculos();
     }
 
 }

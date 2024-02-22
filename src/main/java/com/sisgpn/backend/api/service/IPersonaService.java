@@ -1,6 +1,9 @@
 package com.sisgpn.backend.api.service;
 
+import com.sisgpn.backend.api.model.Circuito;
 import com.sisgpn.backend.api.model.Persona;
+import com.sisgpn.backend.api.model.Subcircuito;
+import com.sisgpn.backend.api.model.Vehiculo;
 import org.aspectj.weaver.patterns.PerObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,4 +19,8 @@ public interface IPersonaService {
     public Persona save(Persona persona);
 
     public  void delete(Long idPersona);
+
+    public List<Subcircuito> findAllSubcircuitos();
+
+    public List<Vehiculo> findAllVehiculos();
 }

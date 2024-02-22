@@ -30,10 +30,9 @@ public class Subcircuito implements Serializable {
     @JoinColumn(name = "id_circuito")
     private Circuito circuito;
 
-    @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
+   /* @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "subcircuito", cascade = CascadeType.ALL)
-    private List<Persona> listaPersonas;
-
+    private List<Persona> listaPersonas;*/
 
 
 }

@@ -50,4 +50,10 @@ public class VehiculoServiceImpl implements IVehiculoService {
     public void delete(Long idVehiculo) {
         vehiculoDao.deleteById(idVehiculo);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Subcircuito> findAllSubcircuitos() {
+        return vehiculoDao.findAllSubcircuitos();
+    }
 }

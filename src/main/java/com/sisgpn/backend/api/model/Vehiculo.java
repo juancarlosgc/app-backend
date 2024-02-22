@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@Entity(name="vehiculo")
+@Entity(name="Vehiculo")
 @Table(name="vehiculos")
 public class Vehiculo implements Serializable {
     private static final long serialVersionUID=1L;
@@ -54,17 +54,16 @@ public class Vehiculo implements Serializable {
     private String observaciones;
 
 
-
-    /*@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
+/*
+    @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "vehiculo", cascade = CascadeType.ALL)
     private List<Persona> listaPersonas;*/
 
 
-
- /*   @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
+    @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_subcircuito")
-    private Subcircuito subcircuito;*/
+    private Subcircuito subcircuito;
 
 
 

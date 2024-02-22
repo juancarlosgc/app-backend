@@ -2,6 +2,8 @@ package com.sisgpn.backend.api.service.impl;
 
 import com.sisgpn.backend.api.dao.IPersonaDao;
 import com.sisgpn.backend.api.model.Persona;
+import com.sisgpn.backend.api.model.Subcircuito;
+import com.sisgpn.backend.api.model.Vehiculo;
 import com.sisgpn.backend.api.service.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,6 +47,18 @@ public class PersonaServiceImpl implements IPersonaService {
     @Transactional
     public void delete(Long idPersona) {
         personaDao.deleteById(idPersona);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Subcircuito> findAllSubcircuitos() {
+        return personaDao.findAllSubcircuitos();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Vehiculo> findAllVehiculos() {
+        return personaDao.findAllVehiculos();
     }
 
 

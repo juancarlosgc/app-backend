@@ -2,6 +2,7 @@ package com.sisgpn.backend.api.controller;
 
 import com.sisgpn.backend.api.model.Distrito;
 import com.sisgpn.backend.api.model.Persona;
+import com.sisgpn.backend.api.model.Subcircuito;
 import com.sisgpn.backend.api.model.Vehiculo;
 import com.sisgpn.backend.api.service.IDistritoService;
 import com.sisgpn.backend.api.service.IVehiculoService;
@@ -119,6 +120,8 @@ public class VehiculoController {
             vehiculoActual.setTipoVehiculo(vehiculo.getTipoVehiculo());
             vehiculoActual.setObservaciones(vehiculo.getObservaciones());
 
+            vehiculoActual.setSubcircuito(vehiculo.getSubcircuito());
+
             vehiculoActualizado=vehiculoService.save(vehiculoActual);
 
         }catch (DataAccessException e){
@@ -143,6 +146,11 @@ public class VehiculoController {
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK) ;
+    }
+
+    @GetMapping("/subcircuitos")
+    public List<Subcircuito> listarSubcircuitos(){
+        return vehiculoService.findAllSubcircuitos();
     }
 
 }

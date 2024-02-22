@@ -19,4 +19,6 @@ public interface IVehiculoService {
     public Vehiculo save(Vehiculo vehiculo);
 
     public  void delete(Long idVehiculo);
+
+    public List<Subcircuito> findAllSubcircuitos();
 }

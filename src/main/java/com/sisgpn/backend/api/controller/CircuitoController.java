@@ -105,6 +105,7 @@ public class CircuitoController {
             circuitoActual.setCodigoCircuito(circuito.getCodigoCircuito());
             circuitoActual.setNombreCircuito(circuito.getNombreCircuito());
 
+            circuitoActual.setDistrito(circuito.getDistrito());
 
             circuitoActualizado=circuitoService.save(circuitoActual);
 
@@ -136,5 +137,7 @@ public class CircuitoController {
     public List<Distrito> listarDistritos(){
         return circuitoService.findAllDistritos();
     }
+
+
 
 }

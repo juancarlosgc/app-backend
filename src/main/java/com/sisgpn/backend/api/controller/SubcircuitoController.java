@@ -1,6 +1,7 @@
 package com.sisgpn.backend.api.controller;
 
 import com.sisgpn.backend.api.model.Circuito;
+import com.sisgpn.backend.api.model.Distrito;
 import com.sisgpn.backend.api.model.Subcircuito;
 import com.sisgpn.backend.api.service.ICircuitoService;
 import com.sisgpn.backend.api.service.ISubcircuitoService;
@@ -21,7 +22,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
-@RequestMapping("/subircuitos")
+@RequestMapping("/subcircuitos")
 public class SubcircuitoController {
 
     @Autowired
@@ -81,7 +82,7 @@ public class SubcircuitoController {
     }
 
     @PutMapping("/editar/{idSubcircuito}")
-    public ResponseEntity<?> editar(@Valid @RequestBody Circuito circuito,BindingResult result, @PathVariable Long idSubcircuito){
+    public ResponseEntity<?> editar(@Valid @RequestBody Subcircuito subcircuito,BindingResult result, @PathVariable Long idSubcircuito){
         Subcircuito subcircuitoActual = subcircuitoService.findById(idSubcircuito);
         Subcircuito subcircuitoActualizado= null;
 
@@ -102,8 +103,11 @@ public class SubcircuitoController {
         }
 
         try {
-            subcircuitoActual.setCodigoSubcircuito(subcircuitoActual.getCodigoSubcircuito());
-            subcircuitoActual.setNombreSubcircuito(subcircuitoActual.getNombreSubcircuito());
+            subcircuitoActual.setCodigoSubcircuito(subcircuito.getCodigoSubcircuito());
+            subcircuitoActual.setNombreSubcircuito(subcircuito.getNombreSubcircuito());
+
+            subcircuitoActual.setCircuito(subcircuito.getCircuito());
+
             subcircuitoActualizado=subcircuitoService.save(subcircuitoActual);
 
         }catch (DataAccessException e){
@@ -128,6 +132,11 @@ public class SubcircuitoController {
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK) ;
+    }
+
+    @GetMapping("/circuitos")
+    public List<Circuito> listarCircuitos(){
+        return subcircuitoService.findAllCircuitos();
     }
 
 }

@@ -29,7 +29,7 @@ public class Circuito implements Serializable {
     @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     private Distrito distrito;
 
-    @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
+  /*  @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "circuito", cascade = CascadeType.ALL)
-    private List<Subcircuito> listSubcircuito;
+    private List<Subcircuito> listSubcircuito;*/
 }

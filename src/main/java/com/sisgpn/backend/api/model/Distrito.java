@@ -33,8 +33,8 @@ public class Distrito implements Serializable {
     @Enumerated
     private ProviciaEnum provincia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "distrito", cascade = CascadeType.ALL)
+   /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "distrito", cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"})
-    private List<Circuito> listCircuito;
+    private List<Circuito> listCircuito;*/
 
 }
